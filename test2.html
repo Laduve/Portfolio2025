@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florian Duval - UX Designer</title>
+    <style>
+        :root {
+            /* Colors from Alex Portfolio Design System */
+            --brand-blue: #2563EB;
+            --white: #FFFFFF;
+            --dark-text: #111827;
+            --gray-text: #6B7280;
+            --light-blue: #EFF6FF;
+            --success: #41A36D;
+            
+            /* Typography */
+            --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            color: var(--dark-text);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+        
+        header {
+            background-color: var(--white);
+            color: var(--dark-text);
+            padding: 64px 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+        
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+        }
+        
+        .cta-button {
+            background-color: var(--brand-blue);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding: 64px 0;
+        }
+        
+        h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        h2 {
+            font-size: 32px;
+            margin: 32px 0 16px 0;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        h3 {
+            font-size: 22px;
+            margin: 24px 0 16px 0;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        h4 {
+            font-size: 18px;
+            margin: 16px 0 8px 0;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        p {
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: var(--dark-text);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: var(--gray-text);
+        }
+        
+        .tag {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--brand-blue);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .case-study {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+            margin: 64px 0;
+            overflow: hidden;
+        }
+        
+        .case-header {
+            background: var(--light-blue);
+            color: var(--dark-text);
+            padding: 48px 32px;
+        }
+        
+        .case-content {
+            padding: 32px;
+        }
+        
+        .metrics {
+            display: flex;
+            gap: 32px;
+            margin: 32px 0;
+        }
+        
+        .metric {
+            flex: 1;
+            text-align: center;
+            border-left: 1px solid #eee;
+            padding: 16px;
+        }
+        
+        .metric:first-child {
+            border-left: none;
+        }
+        
+        .metric-value {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--brand-blue);
+            margin-bottom: 8px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin: 32px 0;
+        }
+        
+        .process-step {
+            display: flex;
+            margin: 48px 0;
+            gap: 32px;
+        }
+        
+        .step-number {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 9999px;
+            background: var(--brand-blue);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
+        .step-content {
+            flex-grow: 1;
+        }
+        
+        .quote {
+            background: var(--light-blue);
+            border-left: 4px solid var(--brand-blue);
+            padding: 24px;
+            margin: 32px 0;
+            font-style: italic;
+            border-radius: 8px;
+        }
+        
+        .quote-attribution {
+            font-weight: 600;
+            margin-top: 16px;
+            font-style: normal;
+        }
+        
+        .project-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 24px 0;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .results {
+            background: var(--light-blue);
+            padding: 32px;
+            border-radius: 12px;
+            margin: 32px 0;
+        }
+        
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 40px;
+            }
+            
+            h2 {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .metrics {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .metric {
+                border-left: none;
+                border-top: 1px solid #eee;
+                padding-top: 16px;
+            }
+            
+            .metric:first-child {
+                border-top: none;
+                padding-top: 0;
+            }
+            
+            .process-step {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            .hero {
+                padding: 32px 0;
+            }
+            
+            .container {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Florian Duval</div>
+                <div class="nav-links">
+                    <a href="#" class="nav-link">Work</a>
+                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link">Expertise</a>
+                    <a href="#" class="nav-link">Contact</a>
+                </div>
+                <a href="#" class="cta-button">Let's Talk</a>
+            </nav>
+            <div class="hero">
+                <h1>Designer d'expériences qui transforment la façon dont nous interagissons avec notre environnement urbain</h1>
+                <p>14 ans d'expérience à concevoir des solutions axées sur l'humain qui simplifient la complexité et créent un impact mesurable</p>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="case-study">
+            <div class="case-header">
+                <h2>Local Logic: Réinventer l'expérience immobilière</h2>
+                <p>Comment j'ai aidé les acheteurs à prendre des décisions éclairées et augmenté le taux de conversion de 36%</p>
+                <div style="margin-top: 16px;">
+                    <span class="tag">Design de produit</span>
+                    <span class="tag">UX Research</span>
+                    <span class="tag">Data Visualization</span>
+                    <span class="tag">Design mobile</span>
+                </div>
+            </div>
+            
+            <div class="case-content">
+                <section>
+                    <h3>Vue d'ensemble</h3>
+                    <p>En tant que designer principal chez Local Logic, j'ai dirigé la refonte complète de leur widget d'analyse de quartier pour les sites immobiliers. Le défi était de transformer des données complexes sur les quartiers en informations facilement accessibles et pertinentes pour les acheteurs potentiels.</p>
+                    
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value">36%</div>
+                            <div>Augmentation du taux de conversion</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">42%</div>
+                            <div>Amélioration de l'engagement utilisateur</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">5+</div>
+                            <div>Grandes agences immobilières partenaires</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>Le problème</h3>
+                    <p>L'industrie immobilière souffre d'un problème d'information asymétrique. Les acheteurs manquent souvent de contexte pour évaluer la qualité d'un quartier au-delà des simples statistiques. Nos recherches ont révélé trois obstacles principaux :</p>
+                    
+                    <div class="grid">
+                        <div>
+                            <h4>Surcharge cognitive</h4>
+                            <p>Les acheteurs étaient submergés par 17 métriques différentes présentées simultanément, sans hiérarchie claire.</p>
+                        </div>
+                        <div>
+                            <h4>Manque de contexte</h4>
+                            <p>Les scores numériques étaient présentés sans explication sur leur signification réelle pour la vie quotidienne.</p>
+                        </div>
+                        <div>
+                            <h4>Friction sur mobile</h4>
+                            <p>L'interaction entre la navigation sur la carte et le défilement de la page créait une expérience frustrante.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="quote">
+                        <p>"Je ne comprends pas ce que signifie un score de 78 pour la 'marchabilité'. Est-ce bon? Est-ce mauvais? Et par rapport à quoi?"</p>
+                        <div class="quote-attribution">— Participant à l'étude utilisateur</div>
+                    </div>
+                    
+                    <img src="/api/placeholder/900/500" alt="Ancienne interface du widget" class="project-image">
+                </section>
+                
+                <section>
+                    <h3>Le processus de design</h3>
+                    
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Recherche approfondie</h4>
+                            <p>J'ai mené 15 entretiens avec des acheteurs potentiels et 8 avec des agents immobiliers. Cette recherche a révélé que les utilisateurs recherchaient non seulement des données, mais aussi une interprétation de ces données dans le contexte de leur vie quotidienne.</p>
+                            <p>J'ai également analysé les données d'utilisation qui ont montré que 62% des utilisateurs quittaient la page après avoir vu les scores sans continuer vers la page de contact.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Architecture de l'information</h4>
+                            <p>Pour réduire la charge cognitive, j'ai créé une taxonomie claire qui catégorisait les 17 métriques en trois groupes principaux : Transport, Vie quotidienne et Caractère. Cette organisation permettait aux utilisateurs de naviguer intuitivement vers les informations qui les intéressaient le plus.</p>
+                            <p>J'ai transformé les valeurs numériques abstraites en évaluations qualitatives accompagnées d'explications contextuelles:</p>
+                            <img src="/api/placeholder/900/500" alt="Nouvelle architecture d'information" class="project-image">
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Prototypage et tests itératifs</h4>
+                            <p>J'ai développé des prototypes interactifs que nous avons testés avec 22 utilisateurs à travers 3 cycles d'itération. Les tests ont révélé que les utilisateurs comprenaient maintenant clairement la signification des scores et pouvaient prendre des décisions plus rapidement.</p>
+                            <p>Un défi particulier était l'expérience mobile. Pour résoudre le conflit entre le défilement et l'interaction avec la carte, j'ai conçu un système de navigation par onglets avec une carte fixe qui pouvait être développée au besoin.</p>
+                            <img src="/api/placeholder/900/500" alt="Tests utilisateurs et itérations" class="project-image">
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>La solution</h3>
+                    <p>Le produit final est un widget immobilier qui transforme des données complexes en informations actionnables:</p>
+                    <img src="/api/placeholder/900/500" alt="Solution finale" class="project-image">
+                    
+                    <div class="grid">
+                        <div>
+                            <h4>Visualisation intuitive</h4>
+                            <p>Les scores sont présentés visuellement avec des explications contextuelles qui donnent du sens aux chiffres.</p>
+                        </div>
+                        <div>
+                            <h4>Organisation catégorique</h4>
+                            <p>L'information est structurée en catégories logiques qui correspondent aux préoccupations des acheteurs.</p>
+                        </div>
+                        <div>
+                            <h4>Expérience responsive</h4>
+                            <p>Une interface qui s'adapte parfaitement aux appareils mobiles, résolvant les problèmes d'interaction précédents.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="results">
+                    <h3>Résultats et impact</h3>
+                    <p>Six mois après le lancement, les résultats ont dépassé nos attentes:</p>
+                    
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value">36%</div>
+                            <div>Augmentation des leads qualifiés</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">68%</div>
+                            <div>Réduction du taux de rebond</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">3</div>
+                            <div>Nouveaux partenariats majeurs signés</div>
+                        </div>
+                    </div>
+                    
+                    <div class="quote">
+                        <p>"Le widget de Local Logic nous donne un avantage compétitif clair. Nos clients peuvent prendre des décisions plus éclairées, et notre équipe de vente constate une amélioration significative de la qualité des prospects."</p>
+                        <div class="quote-attribution">— Directeur marketing, Centris</div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>Réflexions et apprentissages</h3>
+                    <p>Ce projet m'a enseigné l'importance cruciale de transformer des données complexes en informations contextuelles. Les utilisateurs ne veulent pas seulement des chiffres, ils veulent comprendre ce que ces chiffres signifient pour leur vie quotidienne.</p>
+                    <p>Si je devais recommencer ce projet, j'impliquerais les agents immobiliers plus tôt dans le processus de conception. Leur perspective unique sur les préoccupations des acheteurs aurait pu accélérer notre compréhension des besoins des utilisateurs.</p>
+                    <p>Ce projet illustre ma philosophie de design: simplifier la complexité pour permettre des décisions plus éclairées.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
